@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">LaundryPro</div>
+
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#" onclick="showBooking()">Services</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="user">Hi, User</div>
+</header>
+<div class="hero">
+    <div class="hero-left">
+        <h1 id="hero-h1">REVITALIZE YOUR CLOTHES WITH EXPERTS</h1>
+        <h2 id="hero-h2">LAUNDARY SERVICES</h2>
+        <p id="hero-p">premium cloth wasshing shop with care and gentle ,premium services,quicker delivery,with good customer care services</p>
+        <button id="hero-button" onclick="showBooking()">BOOK A SERVICES NOW</button>
+
+    </div>
+    <div class="hero-right">
+        <img src="https://png.pngtree.com/png-clipart/20230213/original/pngtree-washing-machine-activity-png-image_8953154.png" alt="wasshing machine">
+    </div>
+</div>
+<div class="descrption">
+    <div class="descrption-1">
+        <h1 id="descrption-1-h1">OUR EXPERIENCE</h1>
+    </div>
+    <div class="descrption-2">
+        <h2 id="descrption-2-h2">15+ LAUNDARY SERVICES</h2>
+    </div>
+    <div class="descrption-3">
+        <h2 id="descrption-3-h2">240+ HAPPY CUSTOMERES</h2>
+    </div>
+    <div class="descrption-4">
+        <h2 id="descrption-4-h2">2+ YEARS</h2>
+    </div>
+</div>
+
+<section id="booking-section" class="booking-section">
+
+
+  <div class="booking-left">
+    <h2>Our Services</h2>
+
+    <div class="service-box" data-name="Dry Cleaning" data-price="200">
+      <span>Dry Cleaning - ₹200</span>
+      <button class="add-btn">Add Item</button>
+    </div>
+
+    <div class="service-box" data-name="Wash & Fold" data-price="100">
+      <span>Wash & Fold - ₹100</span>
+      <button class="add-btn">Add Item</button>
+    </div>
+
+    <div class="service-box" data-name="Ironing" data-price="30">
+      <span>Ironing - ₹30</span>
+      <button class="add-btn">Add Item</button>
+    </div>
+
+    <div class="service-box" data-name="Stain Removal" data-price="500">
+      <span>Stain Removal - ₹500</span>
+      <button class="add-btn">Add Item</button>
+    </div>
+
+    <div class="service-box" data-name="Leather & Suede Cleaning" data-price="999">
+      <span>Leather & Suede Cleaning - ₹999</span>
+      <button class="add-btn">Add Item</button>
+    </div>
+
+    <div class="service-box" data-name="Wedding Dress Cleaning" data-price="2800">
+      <span>Wedding Dress Cleaning - ₹2800</span>
+      <button class="add-btn">Add Item</button>
+    </div>
+
+    <p class="info-text">Add items to the cart</p>
+  </div>
+  <div class="booking-right">
+
+    <div class="cart-box">
+      <h3>Added Items</h3>
+      <ul id="cart-items"></ul>
+      <h4>Total: ₹<span id="total">0</span></h4>
+    </div>
+
+    <div class="book-box">
+      <h3>Book Now</h3>
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="email" id="email" placeholder="Email">
+      <input type="tel" id="phone" placeholder="Phone Number">
+      <button id="book-btn">Book Now</button>
+         <p id="success-msg"></p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+    <div class="footer-top">
+        <div class="footer-top1">
+            <h1 id="footer-top1-h1">Premium services</h1>
+            <p id="footer-top1-p">premium services available,through our website</p>
+        </div>
+        <div class="footer-top2">
+            <h1 id="footer-top2-h1">Quick Services</h1>
+            <p id="footer-top2-p">Delivery within mentioned dates with premium servies</p>
+        </div>
+        <div class="footer-top3">
+            <h1 id="footer-top3-h1">Hassle free delivery </h1>
+            <p id="footer-top3-p">delivery partners are well trained for this job , they will be kind</p>
+        </div>
+        <div class="footer-top4">
+            <h1 id="footer-top4-h1">Affordable prices</h1>
+            <p id="footer-top4-p">premium services available,through our website</p>
+        </div>
+    </div>
+    <div class="footer-center">
+        <div class="footer-center-left">
+            <h1>SUBSCRIBE TO NEWSLETTER</h1>
+        </div>
+        <div class="footer-center-right">
+            NAME :<input type="text" id="footer-name"> 
+            e-mail :<input type="email" id="footer-email"> 
+            <button type="submit" id="footer-submit">SUBMIT</button>
+        </div>
+    </div>
+    <div class="footer-below">
+        <div class="footer-below-1">
+            <h1 id="footer-below-1-h1">about us</h1>
+        </div>
+        <div class="footer-below-2">
+            <a href="#" >Home</a>
+            <a href="#" >Services</a>
+            <a href="#" >About us</a>
+            <a href="#" >Contact us</a>
+        </div>
+        <div class="footer-below-3">
+            <ul class="social-links">
+  <li>
+    <a href="#">
+      <ion-icon name="logo-facebook" class="icon-small"></ion-icon>
+      Facebook
+    </a>
+  </li>
+
+  <li>
+    <a href="#">
+      <ion-icon name="logo-twitter" class="icon-small"></ion-icon>
+      Twitter
+    </a>
+  </li>
+
+  <li>
+    <a href="#">
+      <ion-icon name="logo-google" class="icon-small"></ion-icon>
+      Google+
+    </a>
+  </li>
+
+  <li>
+    <a href="#">
+      <ion-icon name="logo-instagram" class="icon-small"></ion-icon>
+      Instagram
+    </a>
+  </li>
+
+  <li>
+    <a href="#">
+      <ion-icon name="logo-pinterest" class="icon-small"></ion-icon>
+      Pinterest
+    </a>
+  </li>
+</ul>
+
+        </div>
+    </div>
+</footer>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script src="main.js"></script>
+</body>
+</html>
