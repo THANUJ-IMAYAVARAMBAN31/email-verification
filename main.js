@@ -6,93 +6,97 @@ let total = 0;
 const cartItems = document.getElementById("cart-items");
 const totalEl = document.getElementById("total");
 
-document.querySelectorAll(".service-box").forEach(box => {
-  const btn = box.querySelector("button");
+const services = document.querySelectorAll(".service-box");
 
-  btn.addEventListener("click", () => {
-    const name = box.dataset.name;
-    const price = Number(box.dataset.price);
+for (let i = 0; i < services.length; i++) {
+  const box = services[i];
+  const button = box.querySelector("button");
 
-    if (btn.classList.contains("remove")) {
-      removeItem(name, price, btn);
+  button.addEventListener("click", function () {
+    const serviceName = box.dataset.name;
+    const servicePrice = Number(box.dataset.price);
+
+    if (button.innerText === "Add Item") {
+      addItem(serviceName, servicePrice, button);
     } else {
-      addItem(name, price, btn);
+      removeItem(serviceName, servicePrice, button);
     }
   });
-});
-
-function addItem(name, price, btn) {
-  const li = document.createElement("li");
-  li.textContent = `${name} - ₹${price}`;
-  li.id = name;
-  cartItems.appendChild(li);
-
-  total += price;
-  totalEl.textContent = total;
-
-  btn.textContent = "Remove Item";
-  btn.classList.add("remove");
 }
 
-function removeItem(name, price, btn) {
+function addItem(name, price, button) {
+  const li = document.createElement("li");
+  li.innerText = name + " - ₹" + price;
+  li.id = name;
+
+  cartItems.appendChild(li);
+
+  total = total + price;
+  totalEl.innerText = total;
+
+  button.innerText = "Remove Item";
+}
+
+function removeItem(name, price, button) {
   const item = document.getElementById(name);
-  if (item) cartItems.removeChild(item);
+  if (item) {
+    cartItems.removeChild(item);
+  }
 
-  total -= price;
-  totalEl.textContent = total;
+  total = total - price;
+  totalEl.innerText = total;
 
-  btn.textContent = "Add Item";
-  btn.classList.remove("remove");
+  button.innerText = "Add Item";
 }
 
 function showBooking() {
-  const booking = document.getElementById("booking-section");
-  booking.style.display = "grid";
-  booking.scrollIntoView({ behavior: "smooth" });
+  const section = document.getElementById("booking-section");
+  section.style.display = "grid";
+  section.scrollIntoView({ behavior: "smooth" });
 }
+
 function getCartItemsText() {
-  const items = [];
-  document.querySelectorAll("#cart-items li").forEach(li => {
-    items.push(li.textContent);
-  });
-  return items.join(", ");
+  let text = "";
+  const items = document.querySelectorAll("#cart-items li");
+
+  for (let i = 0; i < items.length; i++) {
+    text = text + items[i].innerText + ", ";
+  }
+
+  return text;
 }
 
 document.getElementById("book-btn").addEventListener("click", function () {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
 
-  if (!name || !email || !phone) {
+  if (name === "" || email === "" || phone === "") {
     alert("Please fill all fields");
     return;
   }
 
-  const totalAmount = document.getElementById("total").innerText;
-  const cartItemsText = getCartItemsText();
+  const cartText = getCartItemsText();
+  const totalAmount = totalEl.innerText;
 
   emailjs.send("service_ie0ahms", "template_34c9olh", {
     user_name: name,
     user_email: email,
     user_phone: phone,
-    total_amount: totalAmount,
-    cart_items: cartItemsText
+    cart_items: cartText,
+    total_amount: totalAmount
   });
-
   emailjs.send("service_ie0ahms", "template_kxupwjr", {
     user_name: name,
     user_email: email,
     user_phone: phone,
-    total_amount: totalAmount,
-    cart_items: cartItemsText
-  })
-  .then(() => {
+    cart_items: cartText,
+    total_amount: totalAmount
+  }).then(function () {
     document.getElementById("success-msg").innerText =
       "Thank you for booking the service. We will get back to you soon!";
-  })
-  .catch((error) => {
-    console.error("Email failed:", error);
-    alert("Email not sent. Check console.");
+  }).catch(function (error) {
+    console.log("Email error:", error);
+    alert("Email not sent");
   });
 });
-
