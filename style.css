@@ -154,6 +154,11 @@
   cursor:pointer
 }
 .service-box button.remove{background:#ff4d4d}
+#empty-cart-msg {
+  color: #777;
+  font-style: italic;
+  margin-top: 10px;
+}
 
 .book-box input{
   width:100%;
