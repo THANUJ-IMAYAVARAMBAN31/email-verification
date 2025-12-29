@@ -5,8 +5,8 @@
 let total = 0;
 const cartItems = document.getElementById("cart-items");
 const totalEl = document.getElementById("total");
-
 const services = document.querySelectorAll(".service-box");
+const emptyMsg = document.getElementById("empty-cart-msg");
 
 for (let i = 0; i < services.length; i++) {
   const box = services[i];
@@ -24,17 +24,23 @@ for (let i = 0; i < services.length; i++) {
   });
 }
 
+function updateEmptyMessage() {
+  if (cartItems.children.length === 0) {
+    emptyMsg.style.display = "block";
+  } else {
+    emptyMsg.style.display = "none";
+  }
+}
+
 function addItem(name, price, button) {
   const li = document.createElement("li");
   li.innerText = name + " - ₹" + price;
   li.id = name;
-
   cartItems.appendChild(li);
-
-  total = total + price;
+  total += price;
   totalEl.innerText = total;
-
   button.innerText = "Remove Item";
+  updateEmptyMessage(); 
 }
 
 function removeItem(name, price, button) {
@@ -43,10 +49,10 @@ function removeItem(name, price, button) {
     cartItems.removeChild(item);
   }
 
-  total = total - price;
+  total -= price;
   totalEl.innerText = total;
-
   button.innerText = "Add Item";
+  updateEmptyMessage();
 }
 
 function showBooking() {
