@@ -77,10 +77,6 @@ body{
 .footer-below-2 a{
   color:#334155;
 }
-.footer-below-2 a:hover{
-  text-decoration:underline;
-}
-
 .booking-section{
   background:#f8fafc;
 }
@@ -106,7 +102,6 @@ body{
   outline:none;
 }
 
-/* SUCCESS */
 #success-msg{
   color:#16a34a;
 }
